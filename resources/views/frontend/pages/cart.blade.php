@@ -83,6 +83,7 @@
                             </thead>
                             <tbody>
                                 @php $total_price=0; @endphp
+                                @if(empty(!$addcart))
                                 @foreach($addcart as $item)
                                 @foreach($product as $someproduct)
                                 @if($someproduct->id==$item->p_id)
@@ -123,6 +124,7 @@
                                 @endif
                                 @endforeach
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
 
@@ -136,7 +138,7 @@
                                 <div class="buttons-cart checkout--btn">
                                     <h3>Total</h3>
                                     <a  href="#">${{ $total_price }}</a>
-                                    <a href="#">checkout</a>
+                                    <a target="_blank" href="{{ Route('checkout1') }}">checkout</a>
                                 </div>
                             </div>
                         </div>

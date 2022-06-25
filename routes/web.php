@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 use App\Http\Controllers\Backend\productController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Backend\categoriesController;
 use App\Http\Controllers\Backend\contact_usController;
 
@@ -17,9 +18,24 @@ use App\Http\Controllers\Backend\contact_usController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// SSLCOMMERZ Start
+Route::get('/checkout2', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout2'); 
+Route::get('/checkout1', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('checkout1');
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 
 
-Route::get('/',[FrontendController::class,'index']);
+
+Route::get('/',[FrontendController::class,'index'])->name('/');
+Route::get('/user',[FrontendController::class,'userindex']);
 Route::get('/customerregistration',[FrontendController::class,'customerregistration']);
 Route::get('/add/{id}',[FrontendController::class,'add']);
 Route::post('/cartupdate/{id}',[FrontendController::class,'updateitem'])->name('cartupdate');

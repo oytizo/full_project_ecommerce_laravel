@@ -44,7 +44,7 @@
 
      }
 
-
+@if(empty(!$product))
      @foreach($product as $product)
 
      jQuery('.addcart{{ $product->id }}').click(function() {
@@ -89,6 +89,7 @@
          });
      });
      @endforeach
+     @endif
  </script>
 
 

@@ -13,7 +13,7 @@
         </ul>
         <ul class="shopping__btn">
             <li><a href="{{ Route('cart') }}">View Cart</a></li>
-            <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+            <li class="shp__checkout"><a target="_blank" href="{{ Route('checkout1') }}">Checkout</a></li>
         </ul>
     </div>
 </div>

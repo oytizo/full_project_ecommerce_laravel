@@ -98,8 +98,12 @@ class FrontendController extends Controller
          return view('frontend.pages.cart',compact('addcart','product','category'));
       }
       else{
+        $id=1;
+        $idd=0;
         $category=categoriesModel::all();
-        return view('frontend.pages.cart',compact('category'));
+        $addcart=addtocartModel::find($id);
+        $product = productModel::find($idd);
+        return view('frontend.pages.cart',compact('category','addcart','product'));
       }
     }
 
@@ -112,6 +116,15 @@ class FrontendController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function userindex()
+    {
+        if(Auth::check()){
+            $deleteitem=addtocartModel::where('user_id',Auth::user()->id)->delete();
+
+             return redirect()->route('/');
+          }
     }
 
     /**
