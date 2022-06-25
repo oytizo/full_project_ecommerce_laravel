@@ -18,7 +18,8 @@
                                 <li><a href="contact.html">{{ $category->categories  }}</a></li>
 
                                 @endforeach
-                                <li><a href="contact.html">contact</a></li>
+                                <li><a href="{{ route('contact_us') }}">contact</a></li>
+                                <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                             </ul>
                         </nav>
 

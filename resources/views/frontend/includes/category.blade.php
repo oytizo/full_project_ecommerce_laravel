@@ -25,8 +25,7 @@
                                     <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
 
                                     <li><button class="addcart{{ $product->id }}" value="{{ $product->id }}"><i class="icon-handbag icons"></i></button></li>
-
-                                    <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
+                                    <li><button class="wishlist{{ $product->id }}" value="{{ $product->id }}"><i class="icon-shuffle icons"></i></button></li>
                                 </ul>
                             </div>
                             <div class="fr__product__inner">

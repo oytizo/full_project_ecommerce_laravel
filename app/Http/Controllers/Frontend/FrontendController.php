@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Frontend;
 
 
 use Cart;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Backend\addtocartModel;
 use App\Models\Backend\productModel;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Backend\addtocartModel;
+use App\Models\Frontend\wishlistModel;
+
 use App\Models\Backend\categoriesModel;
+use App\Models\Backend\contact_usModel;
 
 class FrontendController extends Controller
 {
@@ -72,6 +76,56 @@ class FrontendController extends Controller
 
         
     }
+    public function wishlistadd ($id)
+    {
+        
+        // Cart::add(array(
+        //     'id' => $id, // inique row ID
+        //     'name' => $product->name,
+        //     'price' => $product->price,
+        //     'quantity' => '1',
+        //     'attributes' => array()
+        // ));
+
+
+        if(Auth::check()){
+        $pid=wishlistModel::where('p_id',$id)->get();
+        if($pid->count() > 0){
+            return response()->json([
+                'data'=>"same"
+             ]);
+        }
+        else{
+            $qntt=1;
+            $product=productModel::find($id);
+            $addcart=new wishlistModel;
+            $addcart->user_id=Auth::user()->id;
+            $addcart->p_id=$id;
+            $addcart->qtn=$qntt;
+
+            $addcart->save();
+            // $product=productModel::where('id',)->get();
+
+            return response()->json([
+                'data'=>"success",
+                'item'=>$product
+             ]);
+        }
+
+
+       
+        }
+        else{
+            return response()->json([
+                'data'=>"notsuccess"
+             ]);
+        
+        }
+
+        
+    }
+
+
     public function customerregistration()
     {
         return view('frontend.pages.customerregistration'); 
@@ -127,6 +181,49 @@ class FrontendController extends Controller
           }
     }
 
+    public function contact_us()
+    {
+        $category=categoriesModel::all();
+
+        return view('frontend/pages/contact_us',compact('category'));
+    }
+  
+
+   public function insert_contact(Request $request)
+    {
+        $date = Carbon::now();
+        
+        $contact= new contact_usModel;
+        $contact->name=$request->name;
+        $contact->email=$request->email;
+        $contact->mobile=$request->mobile;
+        $contact->comment=$request->comment;
+        $contact->added_on=$date ;
+
+        $contact->save();
+
+        return back();
+    }
+
+    
+   public function wishlist()
+   {
+    if(Auth::check()){
+        $category=categoriesModel::all();
+        $wishlist=wishlistModel::where('user_id',Auth::user()->id)->get();
+      //   $product = productModel::whereIn('id',$addcart)->paginate();
+        $product = productModel::all();
+         return view('frontend/pages/wishlist',compact('wishlist','product','category'));
+      }
+      else{
+        $id=0;
+        $idd=0;
+        $category=categoriesModel::all();
+        $wishlist=wishlistModel::find($id);
+        $product = productModel::find($idd);
+        return view('frontend/pages/wishlist',compact('category','wishlist','product'));
+      }
+   }
     /**
      * Display the specified resource.
      *

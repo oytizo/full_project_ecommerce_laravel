@@ -19,30 +19,7 @@
     }
 });
 
-     function cartshow() {
-         jQuery('.shp__cart__wrap').html('');
-         @php $cartCollection = Cart::getContent();
-         @endphp
-         @foreach($cartCollection as $item)
 
-         jQuery('.shp__cart__wrap').append('<div class="shp__single__product">\
-                <div class="shp__pro__thumb">\
-                    <a href="#">\
-                        <img src="{{ asset("backend/product_image/".$item->image) }}">\
-                    </a>\
-                </div>\
-                <div class="shp__pro__details">\
-                    <h2><a href="product-details.html">{{ $item->name }}</a></h2>\
-                    <span class="quantity">1</span>\
-                    <span class="shp__price">${{ $item->price }}</span>\
-                </div>\
-                <div class="remove__btn">\
-                    <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>\
-                </div>\
-            </div>')
-         @endforeach
-
-     }
 
 @if(empty(!$product))
      @foreach($product as $product)
@@ -88,8 +65,30 @@
              }
          });
      });
+     jQuery('.wishlist{{ $product->id }}').click(function() {
+         var temp = jQuery('.wishlist{{ $product->id }}').val();
+         $.ajax({
+             url: 'wishlistadd/' + temp,
+             data: 'get',
+             datatype: 'json',
+             success: function(result) {
+                 if (result.data != 'same') {
+                     if (result.data == 'success') {
+                        alert('Successfully Added To Wishlist');
+
+                     } else {
+                         location.replace('/customerregistration');
+                     }
+                 } else {
+                     alert('already added');
+                 }
+
+             }
+         });
+     });
      @endforeach
      @endif
+
  </script>
 
 

@@ -37,11 +37,16 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 Route::get('/',[FrontendController::class,'index'])->name('/');
 Route::get('/user',[FrontendController::class,'userindex']);
 Route::get('/customerregistration',[FrontendController::class,'customerregistration']);
-Route::get('/add/{id}',[FrontendController::class,'add']);
+Route::get('/add/{id}',[FrontendController::class,'add'])->name('add');
+Route::get('/wishlistadd/{id}',[FrontendController::class,'wishlistadd']);
 Route::post('/cartupdate/{id}',[FrontendController::class,'updateitem'])->name('cartupdate');
 Route::get('/cartdelete/{id}',[FrontendController::class,'deleteitem'])->name('cartdelete');
 Route::get('/cart',[FrontendController::class,'cart'])->name('cart');
 Route::get('/add1/{id}',[FrontendController::class,'add1']);
+Route::get('/contact_us',[FrontendController::class,'contact_us'])->name('contact_us');
+Route::post('/insert_contact',[FrontendController::class,'insert_contact'])->name('insert_contact');
+Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('wishlist');
+
 
 
 Route::get('/admin', function () {
