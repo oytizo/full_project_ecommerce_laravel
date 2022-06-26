@@ -84,6 +84,14 @@
                                 <div class="send__btn">
                                     <a class="fr__btn" href="#">Send Mail</a>
                                 </div>
+                                <br>
+                               
+                                @if(Auth::check())
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="btn btn-success" class="nav-link"><i class="fa fa-power-off"></i>Logout</button>
+                                </form>
+                                @endif
                             </div>
 
                         </div>

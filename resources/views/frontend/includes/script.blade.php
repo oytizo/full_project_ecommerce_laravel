@@ -13,15 +13,15 @@
 
 
  <script>
-    $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+     $.ajaxSetup({
+         headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+     });
 
 
 
-@if(empty(!$product))
+     @if(empty(!$product))
      @foreach($product as $product)
 
      jQuery('.addcart{{ $product->id }}').click(function() {
@@ -39,8 +39,8 @@
                          // $.each(result.item,function(key,item){
 
                          // });
-                         var temp=parseInt(jQuery('.total__price').text());
-                         temp=temp+result.item['price'];
+                         var temp = parseInt(jQuery('.total__price').text());
+                         temp = temp + result.item['price'];
                          jQuery('.total__price').html(temp);
 
                          jQuery('.shp__cart__wrap').append('<div class="shp__single__product">\
@@ -74,7 +74,7 @@
              success: function(result) {
                  if (result.data != 'same') {
                      if (result.data == 'success') {
-                        alert('Successfully Added To Wishlist');
+                         alert('Successfully Added To Wishlist');
 
                      } else {
                          location.replace('/customerregistration');
@@ -89,6 +89,39 @@
      @endforeach
      @endif
 
+     $.ajaxSetup({
+         headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+     });
+     jQuery(document).ready(function() {
+         jQuery('.search_all').keyup(function() {
+             var temp = jQuery('.search_all').val();
+            if(temp!=''){
+                $.ajax({
+                 url: 'search/' + temp,
+                 type: 'get',
+                 dataType: 'json',
+                 success: function(result) {
+                jQuery(".search_list").html('');
+                     $.each(result.data, function(key, item) {
+                         jQuery(".search_list").append('<li class="list-unstyled">' + item.name + '</li>');
+                     });
+                 }
+             });
+            }
+            else{
+                jQuery(".search_list").html('');
+            }
+         });
+         jQuery(document).on('click','.search_list li',function(){
+            var res=jQuery(this).text();
+            jQuery('.search_all').val(res);
+            var res=jQuery('.search_list li').hide();
+
+         });
+
+     });
  </script>
 
 

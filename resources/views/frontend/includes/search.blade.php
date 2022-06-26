@@ -4,7 +4,11 @@
                         <div class="col-md-12" >
                             <div class="search__inner">
                                 <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                    @csrf
+                                    <input class="search_all" placeholder="Search here... " type="text">
+                                    <div class="search_list">
+                                        
+                                    </div>
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">

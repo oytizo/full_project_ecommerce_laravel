@@ -41,9 +41,11 @@
                             <div class="header__search search search__open">
                                 <a href="#"><i class="icon-magnifier icons"></i></a>
                             </div>
+                            @if(!Auth::check())
                             <div class="header__account">
-                                <a href="#"><i class="icon-user icons"></i></a>
+                                <a href="{{ url('customerregistration/') }}"><i class="icon-user icons"></i></a>
                             </div>
+                              @endif
                         </div>
                     </div>
                 </div>

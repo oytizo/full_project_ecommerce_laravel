@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -41,3 +42,4 @@
 
     <!-- Body main wrapper start -->
     <div class="wrapper">
+  

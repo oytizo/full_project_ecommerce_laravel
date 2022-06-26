@@ -11,6 +11,7 @@
         <div class="htc__product__container">
             <div class="row">
                 <div class="product__list clearfix mt--30">
+                  
                     @foreach($product as $product)
                     @if($product->cat_id==1)
                     <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">

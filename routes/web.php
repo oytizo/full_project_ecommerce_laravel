@@ -39,6 +39,7 @@ Route::get('/user',[FrontendController::class,'userindex']);
 Route::get('/customerregistration',[FrontendController::class,'customerregistration']);
 Route::get('/add/{id}',[FrontendController::class,'add'])->name('add');
 Route::get('/wishlistadd/{id}',[FrontendController::class,'wishlistadd']);
+Route::get('/search/{id}',[FrontendController::class,'search']);
 Route::post('/cartupdate/{id}',[FrontendController::class,'updateitem'])->name('cartupdate');
 Route::get('/cartdelete/{id}',[FrontendController::class,'deleteitem'])->name('cartdelete');
 Route::get('/cart',[FrontendController::class,'cart'])->name('cart');

@@ -8,6 +8,9 @@
 @include('frontend/includes/header1')
 
 
+@include('frontend/includes/search')
+
+
 <!-- End Search Popap -->
 <!-- Start Cart Panel -->
 

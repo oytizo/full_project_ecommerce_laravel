@@ -136,7 +136,15 @@ class FrontendController extends Controller
         return view('frontend.pages.customerregistration'); 
         
     }
-
+    public function search($id)
+    {
+        $products = productModel::where('name', 'LIKE', '%'.$id.'%')->get();
+       
+        return response()->json([
+            'data'=>$products
+        ]);
+        
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -145,6 +153,7 @@ class FrontendController extends Controller
     public function cart()
     {
       if(Auth::check()){
+        
         $category=categoriesModel::all();
         $addcart=addtocartModel::where('user_id',Auth::user()->id)->get();
       //   $product = productModel::whereIn('id',$addcart)->paginate();
@@ -152,6 +161,7 @@ class FrontendController extends Controller
          return view('frontend.pages.cart',compact('addcart','product','category'));
       }
       else{
+     
         $id=1;
         $idd=0;
         $category=categoriesModel::all();
