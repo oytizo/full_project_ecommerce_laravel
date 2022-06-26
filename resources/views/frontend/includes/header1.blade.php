@@ -21,27 +21,17 @@
                                 <li><a href="{{ route('contact_us') }}">contact</a></li>
                                 <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                 <li><a href="{{ route('cart') }}">View Cart</a></li>
+
                             </ul>
                         </nav>
 
                         <div class="mobile-menu clearfix visible-xs visible-sm">
                             <nav id="mobile_dropdown">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="cart.html">Cart page</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="product-grid.html">product grid</a></li>
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="{{ url('/') }}">Home</a></li>
+                                    <li><a href="{{ route('contact_us') }}">contact</a></li>
+                                <li><a href="{{ route('wishlist') }}">wishlist</a></li>
+                                <li><a href="{{ route('cart') }}">View Cart</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -53,10 +43,6 @@
                             </div>
                             <div class="header__account">
                                 <a href="#"><i class="icon-user icons"></i></a>
-                            </div>
-                            <div class="htc__shopping__cart">
-                                <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                <a href="#"><span class="htc__qua">0</span></a>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
 
 <!-- Start Header Style -->
 
-@include('frontend/includes/header')
+@include('frontend/includes/header1')
 
 
 <!-- End Search Popap -->
@@ -23,11 +23,11 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="product-thumbnail">Image</th>
-                                        <th class="product-name"><span class="nobr">Product Name</span></th>
-                                        <th class="product-price"><span class="nobr">Price </span></th>
-                                        <th class="product-stock-stauts"><span class="nobr"> Stock Status </span></th>
-                                        <th class="product-remove"><span class="nobr">Remove</span></th>
+                                        <th class="product-thumbnail">Remove</th>
+                                        <th class="product-name"><span class="nobr">Image</span></th>
+                                        <th class="product-price"><span class="nobr">Product Name </span></th>
+                                        <th class="product-stock-stauts"><span class="nobr"> Price </span></th>
+                                        <th class="product-remove"><span class="nobr">Stock Status</span></th>
                                         <th class="product-add-to-cart"><span class="nobr">Add To Cart</span></th>
                                     </tr>
                                 </thead>
@@ -39,7 +39,7 @@
                                     @if($someproduct->id==$item->p_id)
 
                                     <tr>
-                                        <td class="product-remove"><a href="#">×</a></td>
+                                        <td class="product-remove"><a href="{{ Route('delwishlist',$someproduct->id) }}">×</a></td>
                                         <td class="product-thumbnail"><a href="#"><img src="{{ asset('backend/product_image/'.$someproduct->image) }}" alt="" /></a></td>
                                         <td class="product-name"><a href="#">{{ $someproduct->name }}</a></td>
                                         <td class="product-price"><span class="amount">{{ $someproduct->price }}</span></td>

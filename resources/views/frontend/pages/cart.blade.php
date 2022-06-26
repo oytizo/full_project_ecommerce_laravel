@@ -5,7 +5,7 @@
 
 <!-- Start Header Style -->
 
-@include('frontend/includes/header')
+@include('frontend/includes/header1')
 
 <!-- End Header Area -->
 <!-- Start Search Popap -->

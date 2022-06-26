@@ -279,4 +279,14 @@ class FrontendController extends Controller
         $product = productModel::all();
          return view('frontend.pages.cart',compact('addcart','product','category'));
     }
+
+    public function delwishlist($id)
+    {
+        $deleteitem=wishlistModel::where('p_id',$id)->delete();
+        $category=categoriesModel::all();
+        $wishlist=wishlistModel::where('user_id',Auth::user()->id)->get();
+      //   $product = productModel::whereIn('id',$addcart)->paginate();
+        $product = productModel::all();
+         return view('frontend/pages/wishlist',compact('wishlist','product','category'));
+    }
 }

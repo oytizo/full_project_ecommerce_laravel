@@ -46,6 +46,7 @@ Route::get('/add1/{id}',[FrontendController::class,'add1']);
 Route::get('/contact_us',[FrontendController::class,'contact_us'])->name('contact_us');
 Route::post('/insert_contact',[FrontendController::class,'insert_contact'])->name('insert_contact');
 Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('wishlist');
+Route::get('/delwishlist/{id}',[FrontendController::class,'delwishlist'])->name('delwishlist');
 
 
 
