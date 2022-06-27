@@ -28,6 +28,12 @@ class FrontendController extends Controller
         $product=productModel::all();
         return view('frontend.home',compact('category','product'));
     }
+
+    public function payment()
+    {
+       
+        return view('frontend.pages.payment');
+    }
     public function add($id)
     {
         

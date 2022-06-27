@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Backend\categoriesController;
 use App\Http\Controllers\Backend\contact_usController;
+use App\Http\Controllers\Frontend\PhoneAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,10 +33,11 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 
-
+Route::get('phone-auth', [PhoneAuthController::class, 'index']);
 
 Route::get('/',[FrontendController::class,'index'])->name('/');
 Route::get('/user',[FrontendController::class,'userindex']);
+Route::get('/payment',[FrontendController::class,'payment'])->name('payment');
 Route::get('/customerregistration',[FrontendController::class,'customerregistration']);
 Route::get('/add/{id}',[FrontendController::class,'add'])->name('add');
 Route::get('/wishlistadd/{id}',[FrontendController::class,'wishlistadd']);
