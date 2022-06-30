@@ -30,7 +30,7 @@
                                 </ul>
                             </div>
                             <div class="fr__product__inner">
-                                <h4><a href="product-details.html">Largest Water Pot</a></h4>
+                                <h4><a href="{{ Route('product_view',$product->id) }}">{{ $product->name  }}</a></h4>
                                 <ul class="fr__pro__prize">
                                     <li class="old__prize">{{ $product->price  }}</li>
                                     <li>$25.9</li>

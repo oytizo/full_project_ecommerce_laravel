@@ -28,7 +28,10 @@
                   <a href="{{ Route('categoriesview') }}">Categories</a>
                </li>
                <li class="menu-item-has-children dropdown">
-                  <a href="#">Products</a>
+                  <a href="{{ Route('productview') }}">Products</a>
+               </li>
+               <li class="menu-item-has-children dropdown">
+                  <a href="{{ Route('orderview') }}">Orders</a>
                </li>
                <li class="menu-item-has-children dropdown">
                   <a href="">About Us</a>

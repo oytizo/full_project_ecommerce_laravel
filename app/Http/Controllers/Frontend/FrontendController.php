@@ -137,6 +137,15 @@ class FrontendController extends Controller
         return view('frontend.pages.customerregistration'); 
         
     }
+
+    public function product_view($id)
+    {
+        $category=categoriesModel::all();
+        $product=productModel::find($id);
+        return view('frontend.pages.product_detail',compact('product','category'));  
+        
+    }
+    
     public function add1($id)
     {
         return view('frontend.pages.customerregistration'); 

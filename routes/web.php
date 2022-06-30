@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\Backend\orderController;
 use App\Http\Controllers\Backend\productController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\SslCommerzPaymentController;
@@ -45,7 +46,8 @@ Route::get('/search/{id}',[FrontendController::class,'search']);
 Route::post('/cartupdate/{id}',[FrontendController::class,'updateitem'])->name('cartupdate');
 Route::get('/cartdelete/{id}',[FrontendController::class,'deleteitem'])->name('cartdelete');
 Route::get('/cart',[FrontendController::class,'cart'])->name('cart');
-Route::get('/add1/{id}',[FrontendController::class,'add1']);
+Route::get('/add1/{id}',[FrontendController::class,'add1'])->name('add1');
+Route::get('/product_view/{id}',[FrontendController::class,'product_view'])->name('product_view');
 Route::get('/contact_us',[FrontendController::class,'contact_us'])->name('contact_us');
 Route::post('/insert_contact',[FrontendController::class,'insert_contact'])->name('insert_contact');
 Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('wishlist');
@@ -60,25 +62,32 @@ Route::get('/admin', function () {
 
 Route::group(['prefix'=>'/admin'],function(){
     Route::group(['prefix'=>'/categories'],function(){
-        Route::get('/categoriesview',[categoriesController::class,'index'])->name('categoriesview');
-        Route::get('/insertcategories',[categoriesController::class,'create'])->name('insertcategories');
-        Route::post('/addcategories',[categoriesController::class,'store'])->name('addcategories');
-        Route::get('/editcategories/{id}',[categoriesController::class,'edit'])->name('editcategories');
-        Route::post('/updatecategories/{id}',[categoriesController::class,'update'])->name('updatecategories');
-        Route::get('/deletecategories/{id}',[categoriesController::class,'delete'])->name('deletecategories');
+        Route::get('/categoriesview',[categoriesController::class,'index'])->name('categoriesview')->middleware(['myauth']);
+        Route::get('/insertcategories',[categoriesController::class,'create'])->name('insertcategories')->middleware(['myauth']);
+        Route::post('/addcategories',[categoriesController::class,'store'])->name('addcategories')->middleware(['myauth']);
+        Route::get('/editcategories/{id}',[categoriesController::class,'edit'])->name('editcategories')->middleware(['myauth']);
+        Route::post('/updatecategories/{id}',[categoriesController::class,'update'])->name('updatecategories')->middleware(['myauth']);
+        Route::get('/deletecategories/{id}',[categoriesController::class,'delete'])->name('deletecategories')->middleware(['myauth']);
     });
     
     Route::group(['prefix'=>'/product'],function(){
-        Route::get('/productview',[productController::class,'index'])->name('productview');
-        Route::get('/insertproduct',[productController::class,'create'])->name('insertproduct');
-        Route::post('/addproduct',[productController::class,'store'])->name('addproduct');
-        Route::get('/editproduct/{id}',[productController::class,'edit'])->name('editproduct');
-        Route::post('/updateproduct/{id}',[productController::class,'update'])->name('updateproduct');
-        Route::get('/deleteproduct/{id}',[productController::class,'delete'])->name('deleteproduct');
+        Route::get('/productview',[productController::class,'index'])->name('productview')->middleware(['myauth']);
+        Route::get('/insertproduct',[productController::class,'create'])->name('insertproduct')->middleware(['myauth']);
+        Route::post('/addproduct',[productController::class,'store'])->name('addproduct')->middleware(['myauth']);
+        Route::get('/editproduct/{id}',[productController::class,'edit'])->name('editproduct')->middleware(['myauth']);
+        Route::post('/updateproduct/{id}',[productController::class,'update'])->name('updateproduct')->middleware(['myauth']);
+        Route::get('/deleteproduct/{id}',[productController::class,'delete'])->name('deleteproduct')->middleware(['myauth']);
+    });
+    Route::group(['prefix'=>'/order'],function(){
+        Route::get('/orderview',[orderController::class,'index'])->name('orderview')->middleware(['myauth']);
+        Route::get('/updateorder/{id}',[orderController::class,'update'])->name('updateorder')->middleware(['myauth']);
+        Route::get('/updateorder1/{id}',[orderController::class,'update1'])->name('updateorder1')->middleware(['myauth']);
+        Route::get('/deleteorder/{id}',[orderController::class,'destroy'])->name('deleteorder')->middleware(['myauth']);
+
     });
     Route::group(['prefix'=>'/contact_us'],function(){
-        Route::get('/contactview',[contact_usController::class,'index'])->name('contactview');
-        Route::get('/deletecontact/{id}',[contact_usController::class,'destroy'])->name('deletecontact');
+        Route::get('/contactview',[contact_usController::class,'index'])->name('contactview')->middleware(['myauth']);
+        Route::get('/deletecontact/{id}',[contact_usController::class,'destroy'])->name('deletecontact')->middleware(['myauth']);
 
     });
 });

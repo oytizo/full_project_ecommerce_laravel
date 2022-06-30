@@ -18,10 +18,16 @@ class Mymiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            return $next($request);
+            if((Auth::user()->id==1)||(Auth::user()->id==2)){
+                return $next($request);
+            }
+            else{
+                return redirect('/');
+            }
+           
         }
         else{
-            return redirect('/');
+            return redirect()->route('login');
 
         }
     }

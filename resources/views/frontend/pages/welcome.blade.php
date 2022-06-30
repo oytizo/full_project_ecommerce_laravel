@@ -13,8 +13,8 @@
         <div class="alert alert-success" id="successAuth" style="display: none;"></div>
         <form>
             <label>Phone Number:</label>
-            <input type="text" id="number" class="form-control" placeholder="+88 ********" value="+88">
-            <!-- <div id="recaptcha-container"></div> -->
+            <input type="text" id="number" class="form-control" name="number" placeholder="+88 ********">
+            <div id="recaptcha-container"></div>
             <button type="button" class="btn btn-primary mt-3" onclick="sendOTP();">Send OTP</button>
         </form>
 
@@ -32,16 +32,15 @@
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
 
     <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyAMsCWSkt13-QIEbTYEDKyr088yOd20uN8",
-            authDomain: "test-75822.firebaseapp.com",
-            databaseURL: "https://test-75822.firebaseio.com",
-            projectId: "test-75822",
-            storageBucket: "test-75822.appspot.com",
-            messagingSenderId: "720849677579",
-            appId: "1:720849677579:web:0f584e5f3ca858e62d460e",
-            measurementId: "G-YLRGGPYZEZ"
-        };
+   const firebaseConfig = {
+  apiKey: "AIzaSyAPIfWzwpaRiHK03N4aX5jQRB9Z9Kn3lYE",
+  authDomain: "test2-eace9.firebaseapp.com",
+  projectId: "test2-eace9",
+  storageBucket: "test2-eace9.appspot.com",
+  messagingSenderId: "977707639244",
+  appId: "1:977707639244:web:19b093036234206cbe7d69",
+  measurementId: "G-LP1L571LMH"
+};
         firebase.initializeApp(firebaseConfig);
     </script>
     <script type="text/javascript">
@@ -53,8 +52,10 @@
             recaptchaVerifier.render();
         }
         function sendOTP() {
+            
             var number = $("#number").val();
             firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
+                
                 window.confirmationResult = confirmationResult;
                 coderesult = confirmationResult;
                 console.log(coderesult);
