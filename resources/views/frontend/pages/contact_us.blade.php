@@ -31,7 +31,7 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">our address</h2>
-                                <p>666 5th Ave New York, NY, United </p>
+                                <p>Dhanmonddi,Dhaka </p>
                             </div>
                         </div>
                         <div class="address">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">openning hour</h2>
-                                <p>666 5th Ave New York, NY, United </p>
+                                <p>Dhanmonddi,Dhaka </p>
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">Phone Number</h2>
-                                <p>123-6586-587456</p>
+                                <p>01723244858</p>
                             </div>
                         </div>
                     </div>      

@@ -14,7 +14,7 @@
                   
                     @foreach($product as $product)
                     @if($product->cat_id==1)
-                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12" id="{{$product->name}}">
                         <div class="category">
                             <div class="ht__cat__thumb">
                                 <a href="product-details.html">
@@ -23,7 +23,7 @@
                             </div>
                             <div class="fr__hover__info">
                                 <ul class="product__action">
-                                    <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+                                    <li><a href="#"><i class="icon-heart icons"></i></a></li>
 
                                     <li><button class="addcart{{ $product->id }}" value="{{ $product->id }}"><i class="icon-handbag icons"></i></button></li>
                                     <li><button class="wishlist{{ $product->id }}" value="{{ $product->id }}"><i class="icon-shuffle icons"></i></button></li>

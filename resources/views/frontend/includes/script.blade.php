@@ -13,6 +13,11 @@
 
 
  <script>
+     function setAction(form) {
+         form.action ='#'+document.getElementsByClassName('search_all')[0].value;
+         return true;
+     }
+
      $.ajaxSetup({
          headers: {
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -97,27 +102,26 @@
      jQuery(document).ready(function() {
          jQuery('.search_all').keyup(function() {
              var temp = jQuery('.search_all').val();
-            if(temp!=''){
-                $.ajax({
-                 url: 'search/' + temp,
-                 type: 'get',
-                 dataType: 'json',
-                 success: function(result) {
-                jQuery(".search_list").html('');
-                     $.each(result.data, function(key, item) {
-                         jQuery(".search_list").append('<li class="list-unstyled">' + item.name + '</li>');
-                     });
-                 }
-             });
-            }
-            else{
-                jQuery(".search_list").html('');
-            }
+             if (temp != '') {
+                 $.ajax({
+                     url: 'search/' + temp,
+                     type: 'get',
+                     dataType: 'json',
+                     success: function(result) {
+                         jQuery(".search_list").html('');
+                         $.each(result.data, function(key, item) {
+                             jQuery(".search_list").append('<li class="list-unstyled">' + item.name + '</li>');
+                         });
+                     }
+                 });
+             } else {
+                 jQuery(".search_list").html('');
+             }
          });
-         jQuery(document).on('click','.search_list li',function(){
-            var res=jQuery(this).text();
-            jQuery('.search_all').val(res);
-            var res=jQuery('.search_list li').hide();
+         jQuery(document).on('click', '.search_list li', function() {
+             var res = jQuery(this).text();
+             jQuery('.search_all').val(res);
+             var res = jQuery('.search_list li').hide();
 
          });
 

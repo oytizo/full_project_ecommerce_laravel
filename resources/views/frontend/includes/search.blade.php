@@ -3,8 +3,7 @@
                     <div class="row" >
                         <div class="col-md-12" >
                             <div class="search__inner">
-                                <form action="#" method="get">
-                                    @csrf
+                                <form onsubmit="return setAction(this)">
                                     <input class="search_all" placeholder="Search here... " type="text">
                                     <div class="search_list">
                                         

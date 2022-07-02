@@ -13,25 +13,31 @@
                         <nav class="main__menu__nav hidden-xs hidden-sm">
                             <ul class="main__menu">
                                 <li class="drop"><a href="{{ url('/') }}">Home</a></li>
-                                @foreach($category as $category)
-
-                                <li><a href="contact.html">{{ $category->categories  }}</a></li>
-
-                                @endforeach
+                             
                                 <li><a href="{{ route('contact_us') }}">contact</a></li>
                                 <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                 <li><a href="{{ route('cart') }}">View Cart</a></li>
-
                             </ul>
                         </nav>
 
                         <div class="mobile-menu clearfix visible-xs visible-sm">
                             <nav id="mobile_dropdown">
                                 <ul>
-                                    <li><a href="{{ url('/') }}">Home</a></li>
-                                    <li><a href="{{ route('contact_us') }}">contact</a></li>
-                                <li><a href="{{ route('wishlist') }}">wishlist</a></li>
-                                <li><a href="{{ route('cart') }}">View Cart</a></li>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="blog.html">blog</a></li>
+                                    <li><a href="#">pages</a>
+                                        <ul>
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                            <li><a href="cart.html">Cart page</a></li>
+                                            <li><a href="checkout.html">checkout</a></li>
+                                            <li><a href="contact.html">contact</a></li>
+                                            <li><a href="product-grid.html">product grid</a></li>
+                                            <li><a href="product-details.html">product details</a></li>
+                                            <li><a href="wishlist.html">wishlist</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">contact</a></li>
                                 </ul>
                             </nav>
                         </div>

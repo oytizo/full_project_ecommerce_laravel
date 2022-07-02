@@ -26,7 +26,7 @@ class SslCommerzPaymentController extends Controller
             $product = productModel::all();
             return view('frontend.pages.exampleHosted', compact('addcart', 'product'));
         }
-    }
+        
 
     public function index(Request $request)
     {
