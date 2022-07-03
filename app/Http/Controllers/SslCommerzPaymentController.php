@@ -27,7 +27,7 @@ class SslCommerzPaymentController extends Controller
             return view('frontend.pages.exampleHosted', compact('addcart', 'product'));
         }
         
-
+    }
     public function index(Request $request)
     {
         # Here you have to receive all the order data to initate the payment.
