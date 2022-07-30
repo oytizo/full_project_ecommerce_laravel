@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\contact_usModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class contact_usController extends Controller
@@ -24,9 +25,18 @@ class contact_usController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function userview()
     {
-        //
+        $userinfo=User::where('role','3')->get();
+        return view('backend/pages/userinfo/userinfo',compact('userinfo'));
+    }
+
+    public function deleteuser($id){
+        $userinfo=User::find($id);
+        $userinfo->delete();
+        $userinfo=User::where('role','3')->get();
+        return view('backend/pages/userinfo/userinfo',compact('userinfo'));
+
     }
 
     /**

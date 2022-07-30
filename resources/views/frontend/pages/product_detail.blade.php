@@ -20,11 +20,6 @@
                         <nav class="main__menu__nav hidden-xs hidden-sm">
                             <ul class="main__menu">
                                 <li class="drop"><a href="{{ url('/') }}">Home</a></li>
-                                @foreach($category as $category)
-
-                                <li><a href="contact.html">{{ $category->categories  }}</a></li>
-
-                                @endforeach
                                 <li><a href="{{ route('contact_us') }}">contact</a></li>
                                 <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                 <li><a href="{{ route('cart') }}">View Cart</a></li>

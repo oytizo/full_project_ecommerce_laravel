@@ -28,8 +28,6 @@
             
             <!-- role -->
             <div>
-                <x-label for="role" :value="__('Role')" />
-
                 <x-input id="role" class="block mt-1 w-full" type="hidden" name="role" :value="3" />
             </div>
 
@@ -48,7 +46,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('log') }}">
                     {{ __('Already registered?') }}
                 </a>
 

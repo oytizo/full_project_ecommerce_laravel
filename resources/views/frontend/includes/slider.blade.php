@@ -10,7 +10,7 @@
                                         <h2>collection 20{{ date('y') }}</h2>
                                         <h1>NICE Collection</h1>
                                         <div class="cr__btn">
-                                            <a href="{{ route('cart') }}">Shop Now</a>
+                                            <a href="#Clothes">Shop Now</a>
                                         </div>
                                     </div>
                                 </div>

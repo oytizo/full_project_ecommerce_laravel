@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\Backend\bankController;
 use App\Http\Controllers\Backend\orderController;
 use App\Http\Controllers\Backend\productController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -25,6 +26,7 @@ Route::get('/checkout2', [SslCommerzPaymentController::class, 'exampleEasyChecko
 Route::get('/checkout1', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('checkout1');
 
 Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::get('/anotherpayment', [SslCommerzPaymentController::class, 'anotherpayment'])->name('anotherpayment');
 Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);
@@ -34,7 +36,8 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 
-Route::get('phone-auth', [PhoneAuthController::class, 'index']);
+Route::post('/phone_auth', [PhoneAuthController::class, 'store'])->name('phone_auth');
+Route::get('/phone_auth', [PhoneAuthController::class, 'create']);
 
 Route::get('/',[FrontendController::class,'index'])->name('/');
 Route::get('/user',[FrontendController::class,'userindex']);
@@ -52,8 +55,20 @@ Route::get('/contact_us',[FrontendController::class,'contact_us'])->name('contac
 Route::post('/insert_contact',[FrontendController::class,'insert_contact'])->name('insert_contact');
 Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('wishlist');
 Route::get('/delwishlist/{id}',[FrontendController::class,'delwishlist'])->name('delwishlist');
+Route::get('/qntupdate',[FrontendController::class,'qntupdate'])->name('qntupdate');
+Route::get('/history',[FrontendController::class,'history'])->name('history');
+
+Route::get('/bank',[bankController::class,'index']);
+Route::post('/bankdata',[bankController::class,'store'])->name('bankdata');
 
 
+Route::get('/log', function () {
+    return view('frontend.pages.customerlogin');
+})->name('log');
+
+Route::get('/logreg', function () {
+    return view('frontend.pages.customerregistration');
+})->name('logreg');
 
 Route::get('/admin', function () {
     return view('backend.index');
@@ -67,6 +82,8 @@ Route::group(['prefix'=>'/admin'],function(){
         Route::post('/addcategories',[categoriesController::class,'store'])->name('addcategories')->middleware(['myauth']);
         Route::get('/editcategories/{id}',[categoriesController::class,'edit'])->name('editcategories')->middleware(['myauth']);
         Route::post('/updatecategories/{id}',[categoriesController::class,'update'])->name('updatecategories')->middleware(['myauth']);
+        Route::get('/category_status/{id}',[categoriesController::class,'statusupdate'])->name('category_status')->middleware(['myauth']);
+        Route::get('/category_status1/{id}',[categoriesController::class,'statusupdate1'])->name('category_status1')->middleware(['myauth']);
         Route::get('/deletecategories/{id}',[categoriesController::class,'delete'])->name('deletecategories')->middleware(['myauth']);
     });
     
@@ -88,6 +105,11 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::group(['prefix'=>'/contact_us'],function(){
         Route::get('/contactview',[contact_usController::class,'index'])->name('contactview')->middleware(['myauth']);
         Route::get('/deletecontact/{id}',[contact_usController::class,'destroy'])->name('deletecontact')->middleware(['myauth']);
+
+    });
+    Route::group(['prefix'=>'/userinfo'],function(){
+        Route::get('/userview',[contact_usController::class,'userview'])->name('userview')->middleware(['myauth']);
+        Route::get('/deleteuser/{id}',[contact_usController::class,'deleteuser'])->name('deleteuser')->middleware(['myauth']);
 
     });
 });

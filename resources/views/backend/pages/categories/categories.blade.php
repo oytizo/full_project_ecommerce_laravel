@@ -32,9 +32,9 @@
                                         <td>{{ $x++ }}</td>
                                         <td>{{ $cat->categories }}</td>
                                         @if($cat->status==1)
-                                        <td><button href="" class="btn-sm btn-primary rounded">Active</button></td>
+                                        <td><a href="{{ Route('category_status',$cat->id) }}" class="btn-sm btn-primary rounded">Active</a></td>
                                         @else
-                                        <td><button href="" class="btn-sm btn-secondary rounded">Deactive</button></td>
+                                        <td><a href="{{ Route('category_status1',$cat->id) }}" class="btn-sm btn-secondary rounded">Deactive</a></td>
                                         @endif
                                         <td> 
                                             <a href="{{ Route('editcategories',$cat->id) }}" class="btn-sm btn-primary rounded">Edit</a>

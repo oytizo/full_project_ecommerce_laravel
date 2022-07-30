@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\categoriesModel;
+use App\Models\Backend\productModel;
 use Illuminate\Http\Request;
 
 class categoriesController extends Controller
@@ -85,7 +86,28 @@ class categoriesController extends Controller
         $categories->update();
         return redirect()->route('categoriesview');
     }
-
+public function statusupdate($id){
+    $categories=categoriesModel::find($id);
+    $product_status=productModel::where('cat_id',$id)->get();
+    foreach($product_status as $status){
+        $status->status='0';
+        $status->update();
+    }
+    $categories->status='0';
+    $categories->update();
+    return redirect()->route('categoriesview');
+}
+public function statusupdate1($id){
+    $categories=categoriesModel::find($id);
+    $product_status=productModel::where('cat_id',$id)->get();
+    foreach($product_status as $status){
+        $status->status='1';
+        $status->update();
+    }
+    $categories->status='1';
+    $categories->update();
+    return redirect()->route('categoriesview');
+}
     /**
      * Remove the specified resource from storage.
      *

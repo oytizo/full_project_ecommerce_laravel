@@ -1,10 +1,4 @@
-var tick=document.querySelector(".tick span");
-var tick_mark=document.querySelector(".tick span i");
-tick.addEventListener('click',function(){
 
-tick.classList.toggle('p-blue');
-tick_mark.classList.toggle('d-none');
-});
 
 
 document.addEventListener('DOMContentLoaded', () => {

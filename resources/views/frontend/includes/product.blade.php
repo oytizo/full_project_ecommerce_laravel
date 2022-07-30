@@ -13,10 +13,12 @@
                 <!-- Start Single Category -->
                 @foreach($product as $product)
                 @if($product->cat_id==2)
-                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12" id="{{$product->name}}">
+                @if($product->status==1)
+                @if($product->qnt>0)
+                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12" id="{{ $product->name }}">
                         <div class="category">
                             <div class="ht__cat__thumb">
-                                <a href="product-details.html">
+                                <a href="{{ Route('product_view',$product->id) }}">
                                     <img src="{{ asset('backend/product_image/'.$product->image) }}" alt="product images">
                                 </a>
                             </div>
@@ -37,6 +39,8 @@
                             </div>
                         </div>
                     </div>
+                @endif
+                @endif
                 @else
                 @endif
                 @endforeach

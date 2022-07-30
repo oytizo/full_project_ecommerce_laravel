@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 
+use function PHPSTORM_META\type;
+
 class productController extends Controller
 {
     /**
@@ -60,7 +62,6 @@ class productController extends Controller
         }
 
         $product->save();
-
 
         return redirect()->route('productview');
     }

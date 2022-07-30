@@ -14,6 +14,7 @@ use App\Models\Frontend\wishlistModel;
 
 use App\Models\Backend\categoriesModel;
 use App\Models\Backend\contact_usModel;
+use App\Models\Backend\orderModel;
 
 class FrontendController extends Controller
 {
@@ -186,6 +187,41 @@ class FrontendController extends Controller
       }
     }
 
+    public function qntupdate(){
+        $user_id=Auth::user()->id;
+        $order=addtocartModel::all();
+        $product=productModel::all();
+        //$qntpro=$product->qnt;
+
+        $sec_id=addtocartModel::where('user_id',$user_id)->get();
+        
+
+        foreach($sec_id as $temp){
+
+           $qnt=$temp->qtn;
+           $pid=$temp->p_id;
+           
+           if($pid){
+            $qntpro=productModel::where('id',$pid)->get();
+            foreach($qntpro as $qntpro)
+            $productqnt=$qntpro->qnt;
+            $productqnt=$productqnt-$qnt;
+        $updateitem=productModel::where('id',$pid)->update(array('qnt' =>$productqnt));
+            
+           }
+           $qntpro=addtocartModel::where('user_id',$user_id)->delete();
+
+        //    foreach($product as $pro){
+        //     $qnt=$pro->qtn;
+        //  }
+           
+        }
+        return redirect()->route('/');
+       
+        
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -201,7 +237,6 @@ class FrontendController extends Controller
     {
         if(Auth::check()){
             $deleteitem=addtocartModel::where('user_id',Auth::user()->id)->delete();
-
              return redirect()->route('/');
           }
     }
@@ -257,11 +292,24 @@ class FrontendController extends Controller
      */
     public function updateitem(Request $request,$id)
     {
-        $updateitem=addtocartModel::where('p_id',$id)->update(array('qtn' =>$request->qnt));
-        $category=categoriesModel::all();
-        $addcart=addtocartModel::where('user_id',Auth::user()->id)->get();
-        $product = productModel::all();
-         return view('frontend.pages.cart',compact('addcart','product','category'));
+        $product_qnt=productModel::where('id',$id)->get();
+        foreach($product_qnt as $p_qnt){
+            if($p_qnt->qnt>=$request->qnt){
+                $updateitem=addtocartModel::where('p_id',$id)->update(array('qtn' =>$request->qnt));
+                $category=categoriesModel::all();
+                $addcart=addtocartModel::where('user_id',Auth::user()->id)->get();
+                $product = productModel::all();
+                 return view('frontend.pages.cart',compact('addcart','product','category'));
+            }
+            else{
+                $updateitem=addtocartModel::where('p_id',$id)->update(array('qtn' =>$p_qnt->qnt));
+                $category=categoriesModel::all();
+                $addcart=addtocartModel::where('user_id',Auth::user()->id)->get();
+                $product = productModel::all();
+                 return view('frontend.pages.cart',compact('addcart','product','category'));
+            }
+        }
+        
         
 
         
@@ -273,9 +321,17 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function history()
     {
-        //
+        if(Auth::check()){
+            $userhistory=orderModel::where('u_id',Auth::user()->id)->get();
+        $product=productModel::all();
+        // dd($userhistory);
+        return view('frontend.pages.history',compact('userhistory','product'));
+        }
+        else{
+            return redirect()->route('log');
+        }
     }
 
     /**

@@ -18,11 +18,12 @@ class Mymiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            if((Auth::user()->id==1)||(Auth::user()->id==2)){
+            if((Auth::user()->role==1)||(Auth::user()->role==2)){
                 return $next($request);
+                
             }
             else{
-                return redirect('/');
+                 return redirect('/');
             }
            
         }

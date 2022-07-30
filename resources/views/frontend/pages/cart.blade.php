@@ -10,7 +10,6 @@
 <!-- End Header Area -->
 <!-- Start Search Popap -->
 
-@include('frontend/includes/search')
 <!-- End Search Popap -->
 <!-- Start Cart Panel -->
 

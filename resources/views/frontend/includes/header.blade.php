@@ -14,13 +14,16 @@
                             <ul class="main__menu">
                                 <li class="drop"><a href="{{ url('/') }}">Home</a></li>
                                 @foreach($category as $category)
-
+                                @if($category->status==1)
                                 <li><a href="#{{ $category->categories  }}">{{ $category->categories  }}</a></li>
-
+                                 @endif
                                 @endforeach
                                 <li><a href="{{ route('contact_us') }}">contact</a></li>
                                 <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                 <li><a href="{{ route('cart') }}">View Cart</a></li>
+                                @if(Auth::check())
+                                <li><a href="{{ route('history') }}">purchase History</a></li>
+                                @endif
                             </ul>
                         </nav>
 
@@ -48,7 +51,7 @@
                     </div>
                     <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                         <div class="header__right">
-                            <div class="header__search search search__open">
+                        <div class="header__search search search__open">
                                 <a href="#"><i class="icon-magnifier icons"></i></a>
                             </div>
                            

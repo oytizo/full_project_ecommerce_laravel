@@ -198,8 +198,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="copyright__inner">
-                                <p>Copyright© <a href="https://freethemescloud.com/">Free themes Cloud</a> 2018. All right reserved.</p>
-                                <a href="#"><img src="images/others/shape/paypol.png" alt="payment images"></a>
+                                <a href="#"><img src="{{ asset('frontend') }}/images/others/shape/paypol.png" alt="payment images"></a>
                             </div>
                         </div>
                     </div>

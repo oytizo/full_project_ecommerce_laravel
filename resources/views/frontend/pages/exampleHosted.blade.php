@@ -157,6 +157,7 @@
                     <label class="custom-control-label" for="save-info">Save this information for next time</label>
                 </div>
                 <hr class="mb-4">
+                <a href="{{ Route('cart') }}" class="btn btn-primary btn-lg btn-block" type="submit">Back to Cart</a>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout (Hosted)</button>
             </form>
         </div>

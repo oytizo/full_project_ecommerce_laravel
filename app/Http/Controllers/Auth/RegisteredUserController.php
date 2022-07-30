@@ -51,14 +51,18 @@ class RegisteredUserController extends Controller
            
                 event(new Registered($user));
                 Auth::login($user);
-                if((Auth::user()->role==1) || (Auth::user()->role==2)){
+
+                if((Auth::user()->role=='1') || (Auth::user()->role=='2')){
                     return redirect(RouteServiceProvider::HOME);
+                    // return redirect()->route('login');
+                    // dd(Auth::user()->role);
                 }
-                elseif((Auth::user()->role==3)){
+                elseif((Auth::user()->role=='3')){
                     return redirect(RouteServiceProvider::USER);
                 }
-               return redirect()->route('login');
-           
+                else{
+                  return redirect()->route('login');
+                }           
         
        
             }

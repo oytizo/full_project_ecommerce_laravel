@@ -137,7 +137,7 @@
     07. Shopping Cart Area
 --------------------------------------*/
 
-    $('.cart__menu').on('click', function(e) {
+    $('.htc__shopping__cart').on('click', function(e) {
         e.preventDefault();
         $('.shopping__cart').addClass('shopping__cart__on');
         $('.body__overlay').addClass('is-visible');

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Backend\bankModel;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PhoneAuthController extends Controller
 {
@@ -14,7 +16,7 @@ class PhoneAuthController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.welcome');
+        
     }
 
     /**
@@ -24,7 +26,7 @@ class PhoneAuthController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('/');
     }
 
     /**
@@ -35,7 +37,23 @@ class PhoneAuthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cart_no=$request->cart_no;
+        $date=$request->date;
+        $cvv_no=$request->cvv_no;
+        $full_name=$request->full_name;
+        $user = DB::table('bank_models')->where('full_name', $full_name)->where('card_no', $cart_no)->where('expair_date', $date)->where('cvv_no', $cvv_no)->get();
+       // $user = DB::table('bank_models')->where('full_name', $full_name)->where('card_no', $cart_no)->get();
+       // $user = bankModel::where('full_name', request('email'))->first();
+       if(count($user)>0){
+        $info= DB::table('bank_models')->where('card_no', $cart_no)->get();
+         return view('frontend.pages.welcome',compact('info'));
+        // return view('frontend.pages.welcome');
+       }
+       else{
+        return back();
+       }
+
+        
     }
 
     /**

@@ -20,6 +20,7 @@
                                         <th class="serial">#SI.</th>
                                         <th>product Name</th>
                                         <th>Category</th>
+                                        <th>Quantity</th>
                                         <th>mrp</th>
                                         <th>price</th>
                                         <th>image</th>
@@ -41,12 +42,17 @@
                                           <td>{{ $categories->categories }}</td>
                                           @endif
                                         @endforeach
+                                        <td>{{ $product->qnt }}</td>
                                         <td>{{ $product->mrp }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td><img src="{{ asset('backend/product_image/'.$product->image) }}" alt=""></td>
                                         <td>{{ $product->short_desc }}</td>                                        
                                         @if($product->status==1)
+                                        @if($product->qnt>0)
                                         <td><button href="" class="btn-sm btn-primary rounded">Active</button></td>
+                                       @else
+                                       <td><button href="" class="btn-sm btn-secondary rounded">Deactive</button></td>
+                                        @endif
                                         @else
                                         <td><button href="" class="btn-sm btn-secondary rounded">Deactive</button></td>
                                         @endif

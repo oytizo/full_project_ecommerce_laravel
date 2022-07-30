@@ -14,10 +14,10 @@
                   <a href="{{ Route('orderview') }}">Orders</a>
                </li>
                <li class="menu-item-has-children dropdown">
-                  <a href="#">About Us</a>
+                  <a href="{{ Route('userview') }}">User Info</a>
                </li>
                <li class="menu-item-has-children dropdown">
-                  <a href="{{ Route('contactview') }}">Contact Us</a>
+                  <a href="{{ Route('contactview') }}">Feedback</a>
                </li>
             </ul>
          </div>
