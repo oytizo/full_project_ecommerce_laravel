@@ -34,7 +34,7 @@
                   <a href="{{ Route('orderview') }}">Orders</a>
                </li>
                <li class="menu-item-has-children dropdown">
-                  <a href="{{ Route('userinfo') }}">User Info</a>
+                  <a href="{{ Route('userview') }}">User Info</a>
                </li>
                <li class="menu-item-has-children dropdown">
                   <a href="{{ Route('contactview') }}">Feedback</a>
@@ -47,8 +47,8 @@
       <header id="header" class="header">
          <div class="top-left">
             <div class="navbar-header">
-               <a class="navbar-brand" href="index.html"><img src="{{ asset('backend') }}/images/logo.png" alt="Logo"></a>
-               <a class="navbar-brand hidden" href="index.html"><img src="{{ asset('backend') }}/images/logo2.png" alt="Logo"></a>
+               <a class="navbar-brand" href="{{ Route('dashboard') }}"><img src="{{ asset('backend') }}/images/logo.png" alt="Logo"></a>
+               <a class="navbar-brand hidden" href="{{ Route('dashboard') }}"><img src="{{ asset('backend') }}/images/logo2.png" alt="Logo"></a>
                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
          </div>

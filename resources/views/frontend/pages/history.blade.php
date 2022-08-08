@@ -56,7 +56,7 @@
                                     <th class="product-name">Email</th>
                                     <th class="product-price">Phone</th>
                                     <th class="product-quantity">Amount</th>
-                                    <th class="product-subtotal">Status</th>
+                                    <th class="product-subtotal">Payment</th>
                                     <th class="product-subtotal">Date & Time</th>
                                 </tr>
                             </thead>

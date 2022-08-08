@@ -12,14 +12,13 @@
                     <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
                         <nav class="main__menu__nav hidden-xs hidden-sm">
                             <ul class="main__menu">
-                                <li class="drop"><a href="{{ url('/') }}">Home</a></li>
-                             
-                                <li><a href="{{ route('contact_us') }}">contact</a></li>
+                                <li class="drop"><a href="{{ url('/') }}">Home</a></li>                             
                                 <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                 <li><a href="{{ route('cart') }}">View Cart</a></li>
                                 @if(Auth::check())
-                                <li><a href="{{ route('history') }}">purchase History</a></li>
+                                <li><a href="{{ route('history') }}">purchase</a></li>
                                 @endif
+                                <li><a href="{{ route('contact_us') }}">contact</a></li>
                             </ul>
                         </nav>
 
