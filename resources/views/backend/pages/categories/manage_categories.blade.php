@@ -11,9 +11,18 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Categories</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="categories" placeholder="Enter Categories Name">
-                    </div>          
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
             </div>
         </div>
     </div>

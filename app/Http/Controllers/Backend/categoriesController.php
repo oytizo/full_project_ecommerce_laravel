@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\categoriesModel;
 use App\Models\Backend\productModel;
 use Illuminate\Http\Request;
-
+use validate;
 class categoriesController extends Controller
 {
     /**
@@ -40,12 +40,21 @@ class categoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $categories=new categoriesModel;
-        $categories->categories=$request->categories;
-        $categories->save();
-    
-    
-        return redirect()->route('categoriesview');
+        $validated = $request->validate([
+            'categories' => 'required|string|max:255',
+        ]);
+
+        if($validated){
+            $categories=new categoriesModel;
+            $categories->categories=$request->categories;
+            $categories->save();
+            return redirect()->route('categoriesview');
+        }
+        else{
+            return back();
+        }
+        
+        
 
     }
 

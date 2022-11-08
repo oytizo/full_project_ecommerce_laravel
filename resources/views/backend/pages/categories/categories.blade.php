@@ -36,7 +36,7 @@
                                         @else
                                         <td><a href="{{ Route('category_status1',$cat->id) }}" class="btn-sm btn-secondary rounded">Deactive</a></td>
                                         @endif
-                                        <td> 
+                                        <td>
                                             <a href="{{ Route('editcategories',$cat->id) }}" class="btn-sm btn-primary rounded">Edit</a>
                                             <a href="{{ Route('deletecategories',$cat->id) }}" class="btn-sm btn-danger rounded">Delete</a>
                                         </td>
@@ -44,6 +44,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <span class="text-danger categoriesError"></span>
                         </div>
                     </div>
                 </div>

@@ -31,8 +31,7 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h2>Hosted Payment - SSLCommerz</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. We have provided this sample form for understanding Hosted Checkout Payment with SSLCommerz.</p>
+        <h2>User Payment</h2>
     </div>
 
     <div class="row">
@@ -158,13 +157,13 @@
                 </div>
                 <hr class="mb-4">
                 <a href="{{ Route('cart') }}" class="btn btn-secondary btn-lg btn-block" type="submit">Back to Cart</a>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout (Hosted)</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
             </form>
         </div>
     </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2019 Company Name</p>
+        <p class="mb-1">&copy; 2022 Ahsan Arafat</p>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="#">Privacy</a></li>
             <li class="list-inline-item"><a href="#">Terms</a></li>

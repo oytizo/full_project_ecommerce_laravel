@@ -8,7 +8,7 @@
            
         </div>
         <ul class="shoping__total">
-            <li class="subtotal">Subtotal:</li>
+            <li class="subtotal">total:</li>
             <li class="total__price">0</li>
         </ul>
         <ul class="shopping__btn">
@@ -17,4 +17,5 @@
         </ul>
     </div>
 </div>
+
 </div>

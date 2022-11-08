@@ -13,7 +13,7 @@
                 <div class="menumenu__container clearfix">
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('frontend') }}/images/logo/4.png" alt="logo images"></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('frontend') }}/images/logo/logo11.png" alt="logo images"></a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
@@ -56,7 +56,7 @@
 
     <!-- End Offset Wrapper -->
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{ asset('frontend') }}/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{ asset('backend') }}/images/slide.jpg) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -103,7 +103,9 @@
                             <ul class="pro__prize">
                                 <li>${{ $product->price }}</li>
                             </ul>
+                            <div>
                             <p class="pro__info">{{ $product->short_desc }}</p>
+                            </div>
                             <div class="ht__pro__desc">
                                 <div class="sin__desc">
                                     <p><span>Availability:</span> In Stock</p>
@@ -113,10 +115,11 @@
                                     <ul class="pro__cat__list">
                                         <li><a href="#">Fashion,</a></li>
                                     </ul>
-
                                 </div>
+                                <br>
+                                <a href="{{ Route('add2',$product->id) }}" class="btn btn-primary">ADD TO CARD</a>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -127,20 +130,7 @@
 </section>
 <!-- End Product Details Area -->
 <!-- Start Product Description -->
-<section class="htc__produc__decription bg__white">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <!-- Start List And Grid View -->
-                <ul class="pro__details__tab" role="tablist">
-                    <li role="presentation" class="description active"><a href="#description" role="tab" data-toggle="tab">description</a></li>
-                </ul>
-                <!-- End List And Grid View -->
-            </div>
-        </div>
 
-    </div>
-</section>
 
 <!-- End Product Description -->
 <!-- Start Product Area -->

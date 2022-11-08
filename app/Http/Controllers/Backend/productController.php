@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 
-use function PHPSTORM_META\type;
 
 class productController extends Controller
 {
@@ -19,8 +18,6 @@ class productController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-
-
     {
         $product = productModel::all();
         $category = categoriesModel::all();
@@ -46,24 +43,37 @@ class productController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new productModel;
-        $product->name = $request->name;
-        $product->cat_id = $request->categories;
-        $product->mrp = $request->mrp;
-        $product->price = $request->price;
-        $product->qnt = $request->qnt;
-        $product->short_desc = $request->short_desc;
-        if ($request->image) {
-            $image = $request->file('image');
-            $customname = rand(11111, 99999) . '.' . $image->getClientOriginalExtension();
-            $location = public_path('backend/product_image/' . $customname);
-            Image::make($image)->save($location);
-            $product->image = $customname;
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'categories' => 'required|max:255',
+            'mrp' => 'required|integer',
+            'price' => 'required|integer',
+            'qnt' => 'required|integer|max:11',
+            'short_desc' => 'required|max:255',
+            'image' => 'required|mimes:jpeg,png,jpg,gif'
+
+        ]);
+        if ($validated) {
+            $product = new productModel;
+            $product->name = $request->name;
+            $product->cat_id = $request->categories;
+            $product->mrp = $request->mrp;
+            $product->price = $request->price;
+            $product->qnt = $request->qnt;
+            $product->short_desc = $request->short_desc;
+            if ($request->image) {
+                $image = $request->file('image');
+                $customname = rand(11111, 99999) . '.' . $image->getClientOriginalExtension();
+                $location = public_path('backend/product_image/' . $customname);
+                Image::make($image)->save($location);
+                $product->image = $customname;
+            }
+            $product->save();
+
+            return redirect()->route('productview');
+        } else {
+            return back();
         }
-
-        $product->save();
-
-        return redirect()->route('productview');
     }
 
     /**
@@ -85,9 +95,9 @@ class productController extends Controller
      */
     public function edit($id)
     {
-        $product=productModel::find($id);
-        $category=categoriesModel::all();
-        return view('backend/pages/product/edit_product',compact('category','product'));
+        $product = productModel::find($id);
+        $category = categoriesModel::all();
+        return view('backend/pages/product/edit_product', compact('category', 'product'));
     }
 
     /**
@@ -107,8 +117,8 @@ class productController extends Controller
         $product->qnt = $request->qnt;
         $product->short_desc = $request->short_desc;
         if ($request->image) {
-            if (File::exists('backend/product_image/'. $product->image)) {
-                File::delete('backend/product_image/'. $product->image);
+            if (File::exists('backend/product_image/' . $product->image)) {
+                File::delete('backend/product_image/' . $product->image);
             }
             $image = $request->file('image');
             $customname = rand(11111, 99999) . '.' . $image->getClientOriginalExtension();
@@ -116,10 +126,7 @@ class productController extends Controller
             Image::make($image)->save($location);
             $product->image = $customname;
         }
-
         $product->update();
-
-
         return redirect()->route('productview');
     }
 
@@ -132,8 +139,8 @@ class productController extends Controller
     public function delete($id)
     {
         $product = productModel::find($id);
-        if (File::exists('backend/product_image/'. $product->image)) {
-            File::delete('backend/product_image/'. $product->image);
+        if (File::exists('backend/product_image/' . $product->image)) {
+            File::delete('backend/product_image/' . $product->image);
         }
         $product->delete();
         return redirect()->route('productview');

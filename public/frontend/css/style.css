@@ -3588,5 +3588,14 @@ ul.htc__instagram__posts.owl-carousel li img {
     background: rgba(255, 255, 255, 0.5);
 }
 
+.msgcontrol{
+    width: 100%;
+}
+
+.msgcontrol h1{
+    margin-top: 100px;
+    color: red;
+}
+
 
 

@@ -16,7 +16,7 @@
                                 @foreach($category as $category)
                                 @if($category->status==1)
                                 <li><a href="#{{ $category->categories  }}">{{ $category->categories  }}</a></li>
-                                 @endif
+                                @endif
                                 @endforeach
                                 <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                 <li><a href="{{ route('cart') }}">Cart</a></li>
@@ -52,15 +52,15 @@
                     </div>
                     <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                         <div class="header__right">
-                        <div class="header__search search search__open">
+                            <div class="header__search search search__open">
                                 <a href="#"><i class="icon-magnifier icons"></i></a>
                             </div>
-                           
+
                             @if(!Auth::check())
                             <div class="header__account">
                                 <a href="{{ url('customerregistration/') }}"><i class="icon-user icons"></i></a>
                             </div>
-                              @endif
+                            @endif
                             <div class="htc__shopping__cart">
                                 <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                 <a href="#"><span class="htc__qua">0</span></a>
@@ -74,6 +74,8 @@
     </div>
     <!-- End Mainmenu Area -->
 </header>
+
+</div>
 
 
 <!-- Start Offset Wrapper -->

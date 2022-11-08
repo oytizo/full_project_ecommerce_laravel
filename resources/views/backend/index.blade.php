@@ -47,7 +47,7 @@
       <header id="header" class="header">
          <div class="top-left">
             <div class="navbar-header">
-               <a class="navbar-brand" href="{{ Route('dashboard') }}"><img src="{{ asset('backend') }}/images/logo.png" alt="Logo"></a>
+               <a class="navbar-brand" href="{{ Route('dashboard') }}"><img src="{{ asset('backend') }}/images/logo3.png" alt="Logo"></a>
                <a class="navbar-brand hidden" href="{{ Route('dashboard') }}"><img src="{{ asset('backend') }}/images/logo2.png" alt="Logo"></a>
                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
@@ -178,10 +178,10 @@
          <div class="footer-inner bg-white">
             <div class="row">
                <div class="col-sm-6">
-                  Copyright &copy; 2018 Ela Admin
+                  Admin
                </div>
                <div class="col-sm-6 text-right">
-                  Designed by <a href="https://colorlib.com/">Colorlib</a>
+                  Designed by <a href="https://colorlib.com/">Ahsan Arafat</a>
                </div>
             </div>
          </div>

@@ -41,9 +41,11 @@ Route::get('/phone_auth', [PhoneAuthController::class, 'create']);
 
 Route::get('/',[FrontendController::class,'index'])->name('/');
 Route::get('/user',[FrontendController::class,'userindex']);
+Route::post('/filtersearch',[FrontendController::class,'filtersearch'])->name('filtersearch');
 Route::get('/payment',[FrontendController::class,'payment'])->name('payment');
 Route::get('/customerregistration',[FrontendController::class,'customerregistration']);
 Route::get('/add/{id}',[FrontendController::class,'add'])->name('add');
+Route::get('/add2/{id}',[FrontendController::class,'add2'])->name('add2');
 Route::get('/wishlistadd/{id}',[FrontendController::class,'wishlistadd']);
 Route::get('/search/{id}',[FrontendController::class,'search']);
 Route::post('/cartupdate/{id}',[FrontendController::class,'updateitem'])->name('cartupdate');
@@ -57,6 +59,7 @@ Route::get('/wishlist',[FrontendController::class,'wishlist'])->name('wishlist')
 Route::get('/delwishlist/{id}',[FrontendController::class,'delwishlist'])->name('delwishlist');
 Route::get('/qntupdate',[FrontendController::class,'qntupdate'])->name('qntupdate');
 Route::get('/history',[FrontendController::class,'history'])->name('history');
+
 
 Route::get('/bank',[bankController::class,'index']);
 Route::post('/bankdata',[bankController::class,'store'])->name('bankdata');
