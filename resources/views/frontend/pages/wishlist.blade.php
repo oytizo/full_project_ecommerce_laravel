@@ -30,7 +30,7 @@
                                         <th class="product-name"><span class="nobr">Image</span></th>
                                         <th class="product-price"><span class="nobr">Product Name </span></th>
                                         <th class="product-stock-stauts"><span class="nobr"> Price </span></th>
-                                        <th class="product-remove"><span class="nobr">Stock Status</span></th>
+                                        <th class="product-remove"><span class="nobr">Stock</span></th>
                                         <th class="product-add-to-cart"><span class="nobr">Add To Cart</span></th>
                                     </tr>
                                 </thead>
